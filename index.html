@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dp-flex">
+    <div id="app" >
+        <div class="app_preview dp-flex">
+            <h3 id="password">gOMXLa#%</h3>
+            <p id="copyPass">Copy</p>
+        </div>
+        <div class="app_body dp-flex">
+            <div class="lengthSlider">
+                <p class="dp-flex">Character Length <span id="lengthPrv">8</span></p>
+                <input type="range" id="range" min="4" max="26" value="8">
+            </div>
+            <div class="options">
+                <p class="dp-flex"><input type="checkbox" id="includeUpperCase" checked> <label for="includeUpperCase">Includes Uppercase letters</label> </p>
+                <p class="dp-flex"><input type="checkbox" id="includeLowerCase" checked> <label for="includeLowerCase">Includes Lowercase letters</label></p>
+                <p class="dp-flex"><input type="checkbox" id="includeNumbers" checked> <label for="includeNumbers">Includes Numbers</label></p>
+                <p class="dp-flex"><input type="checkbox" id="includeSymbols" checked> <label for="includeSymbols">Includes Symbols</label></p>
+            </div>
+            <div class="strength dp-flex">
+                <h3>STRENGTH</h3>
+                <p>-</p>
+            </div>
+
+            <button id="generatePassword">Generate</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
