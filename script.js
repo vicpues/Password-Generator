@@ -8,6 +8,7 @@ const includeLowerCase = document.getElementById("includeLowerCase");
 const includeNumbers = document.getElementById("includeNumbers");
 const includeSymbols = document.getElementById("includeSymbols");
 const generateBtn = document.getElementById("generatePassword");
+const passwordStrength = document.getElementById("passwordStrength");
 
 
 // password length logic
@@ -17,29 +18,38 @@ range.addEventListener("input", ()=>{
 
 // generate password logic
 const generator = (length, includeUpperCase, includeLowerCase, includeNumbers, includeSymbols) =>{
-   
+    length = Number(length.innerText);
     let passwordChar = "";
     let finalPass = "";
+    let strengthOfPass = 0;
     UpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     LowerCase = "abcdefghijklmnopqrstuvwxyz";
     Numbers = "0123456789";
     Symbols = "!@#$%^&*()_+?";
 
-    passwordChar += includeUpperCase.checked ? UpperCase : "";
-    passwordChar += includeLowerCase.checked ? LowerCase : "";
-    passwordChar += includeNumbers.checked ? Numbers : "";
-    passwordChar += includeSymbols.checked ? Symbols : "";
+
+    if(includeUpperCase.checked){passwordChar+= UpperCase;strengthOfPass++;}
+    if(includeLowerCase.checked){passwordChar+= LowerCase;strengthOfPass++};
+    if(includeNumbers.checked){passwordChar+=Numbers;strengthOfPass++};
+    if(includeSymbols.checked){passwordChar+=Symbols;strengthOfPass++};
+    if(length >= 8){strengthOfPass++};
 
     if(passwordChar.length <= 0){
-        password.innerText = "At least one option is checked";
+        alert("At least one option is checked");
     }
     else{
-        for(let i = 0; i < Number(length.innerText); i++){
+        for(let i = 0; i < length; i++){
         let randomIndex = Math.floor(Math.random() * passwordChar.length);
          finalPass+=passwordChar[randomIndex]
        }
     }
     password.innerHTML = finalPass;
+    // logic for checkStrength;
+    let strength = "";
+    if(strengthOfPass <= 2){strength = "Weak"}
+    else if(strengthOfPass === 3){strength = "Moderate"}
+    else if(strengthOfPass >= 4){strength = "Strong"};
+    passwordStrength.innerHTML = `${strength}`;
 };
 
 // copy the generated password
