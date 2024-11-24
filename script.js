@@ -46,10 +46,12 @@ const generator = (length, includeUpperCase, includeLowerCase, includeNumbers, i
     password.innerHTML = finalPass;
     // logic for checkStrength;
     let strength = "";
-    if(strengthOfPass <= 2){strength = "Weak"}
-    else if(strengthOfPass === 3){strength = "Moderate"}
-    else if(strengthOfPass >= 4){strength = "Strong"};
+    let color = "";
+    if(strengthOfPass <= 2){strength = "Weak"; color = "#FE654F"}
+    else if(strengthOfPass === 3){strength = "Moderate"; color = "#FFCB47"}
+    else if(strengthOfPass >= 4){strength = "Strong"; color = "#5B8266"};
     passwordStrength.innerHTML = `${strength}`;
+    passwordStrength.style.color = color;
 };
 
 // copy the generated password
