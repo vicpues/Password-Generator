@@ -17,8 +17,8 @@ range.addEventListener("input", ()=>{
 });
 
 // generate password logic
-const generator = (length, includeUpperCase, includeLowerCase, includeNumbers, includeSymbols) =>{
-    length = Number(length.innerText);
+const generator = () => {
+    let length = Number(passwordLength.innerText);
     let passwordChar = "";
     let finalPass = "";
     let strengthOfPass = 0;
@@ -43,7 +43,7 @@ const generator = (length, includeUpperCase, includeLowerCase, includeNumbers, i
          finalPass+=passwordChar[randomIndex]
        }
     }
-    password.innerHTML = finalPass;
+    password.textContent = finalPass;
     // logic for checkStrength;
     let strength = "";
     let color = "";
@@ -69,7 +69,7 @@ copyPass.addEventListener("click", ()=>{
 
 
 generateBtn.addEventListener("click", ()=>{
-    generator(passwordLength, includeUpperCase, includeLowerCase, includeNumbers, includeSymbols)
+    generator()
 });
 
 
